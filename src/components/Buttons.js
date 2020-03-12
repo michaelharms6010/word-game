@@ -4,19 +4,19 @@ import DisplayContext from "../contexts/DisplayContext"
 export default function Buttons() {
     const {displayText, setDisplayText} = useContext(DisplayContext)
     const [buttonState, setButtonState] = useState({
-        b1: {clicked: false, value: "utak-"},
+        b1: {clicked: false, value: "u tak-"},
         b2: {clicked: false, value: "-k!"},
-        b3: {clicked: false, value: "reyo-"},
+        b3: {clicked: false, value: "re yo-"},
         b4: {clicked: false, value: "mak-"},
-        b5: {clicked: false, value: "-eab"},
+        b5: {clicked: false, value: "-e a b"},
         b6: {clicked: false, value: "-rea"},
-        b7: {clicked: false, value: "esu-"}
+        b7: {clicked: false, value: "e su-"}
     })
 
     const [winMessage, setWinMessage] = useState("")
 
     useEffect( _ => {
-        if (displayText=== "makesureyoutakeabreak!") {
+        if (displayText=== "make sure you take a break!") {
             setWinMessage("Nice job!")
         } else {
             setWinMessage("")
