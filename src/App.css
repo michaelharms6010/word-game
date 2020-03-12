@@ -78,3 +78,14 @@
 button:focus {
   outline: none;  
 }
+
+.victory-message {
+  margin-top: 2rem;
+  color: blue;
+  background: #ffa200;
+  width:30%;
+  padding: 10px;
+  border-radius:20px;
+  margin: 3% auto;
+  border: 1px solid blue;
+}

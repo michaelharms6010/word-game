@@ -4,14 +4,24 @@ import DisplayContext from "../contexts/DisplayContext"
 export default function Buttons() {
     const {displayText, setDisplayText} = useContext(DisplayContext)
     const [buttonState, setButtonState] = useState({
-        b1: {clicked: false, value: "mak-"},
-        b2: {clicked: false, value: "-esu"},
-        b3: {clicked: false, value: "-rey"},
-        b4: {clicked: false, value: "tak-"},
-        b5: {clicked: false, value: "eab-"},
-        b6: {clicked: false, value: "rea-"},
-        b7: {clicked: false, value: "k!-"}
+        b1: {clicked: false, value: "utak-"},
+        b2: {clicked: false, value: "-k!"},
+        b3: {clicked: false, value: "reyo-"},
+        b4: {clicked: false, value: "mak-"},
+        b5: {clicked: false, value: "-eab"},
+        b6: {clicked: false, value: "-rea"},
+        b7: {clicked: false, value: "esu-"}
     })
+
+    const [winMessage, setWinMessage] = useState("")
+
+    useEffect( _ => {
+        if (displayText=== "makesureyoutakeabreak!") {
+            setWinMessage("Nice job!")
+        } else {
+            setWinMessage("")
+        }
+    }, [displayText])
 
     const toggleButton = button => {
         setButtonState({...buttonState, [button]: {...buttonState[button], clicked: !buttonState[button].clicked}})
@@ -24,10 +34,10 @@ export default function Buttons() {
                 setDisplayText(buttonState[button].value.slice(0, -1) + displayText)
             }
         }
-        console.log(buttonState)
     }
 
     return(
+        <>
         <div className="button-container">
             <button className={buttonState.b1.clicked ? "activebutton" : "button"} onClick={_ => toggleButton("b1")}>🦓</button>
             <button className={buttonState.b2.clicked ? "activebutton" : "button"} onClick={_ => toggleButton("b2")}>💸</button>
@@ -37,6 +47,8 @@ export default function Buttons() {
             <button className={buttonState.b6.clicked ? "activebutton" : "button"} onClick={_ => toggleButton("b6")}>🌟</button>
             <button className={buttonState.b7.clicked ? "activebutton" : "button"}onClick={_ => toggleButton("b7")}>🥩</button>
         </div>
+        {winMessage ? <h1 className="victory-message">{winMessage}</h1> : null}
+        </>
     )
 
 }
