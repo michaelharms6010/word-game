@@ -5,7 +5,9 @@ export default function Display() {
     const {displayText, setDisplayText} = React.useContext(DisplayContext)
 
     return(
-        <h1>{displayText}</h1>
+        <div className="display">
+            <h1>{displayText}</h1>
+        </div>
     )
 
 }

@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +41,40 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.display {
+  height:4rem;
+  width:80%;
+  background: #ffa200;
+  margin: 2% auto;
+  border-radius:20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.button {
+  border: none;
+  background:none;
+  padding:5px;
+  border: 1px solid white;
+}
+
+.activebutton {
+  border:none;
+  padding:5px;
+  background: turquoise;
+  border: 1px solid black;
+}
+
+.button-container {
+  width:50%;
+  display:flex;
+  justify-content: space-around;
+  margin: 0 auto;
+}
+
+button:focus {
+  outline: none;  
 }
