@@ -59,9 +59,11 @@
   background:none;
   padding:5px;
   border: 1px solid white;
+  font-size:30px;
 }
 
 .activebutton {
+  font-size:30px;
   border:none;
   padding:5px;
   background: turquoise;

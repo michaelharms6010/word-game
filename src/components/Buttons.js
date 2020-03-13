@@ -1,24 +1,29 @@
 import React, {useState, useContext, useEffect} from "react";
 import DisplayContext from "../contexts/DisplayContext"
+import puzzles from "./data.js"
+let level = 0;
 
 export default function Buttons() {
     const {displayText, setDisplayText} = useContext(DisplayContext)
-    const [buttonState, setButtonState] = useState({
-        b1: {clicked: false, value: "u tak-"},
-        b2: {clicked: false, value: "-k!"},
-        b3: {clicked: false, value: "re yo-"},
-        b4: {clicked: false, value: "mak-"},
-        b5: {clicked: false, value: "-e a b"},
-        b6: {clicked: false, value: "-rea"},
-        b7: {clicked: false, value: "e su-"}
-    })
+    const [buttonState, setButtonState] = useState(puzzles[0])
+    
 
     const [winMessage, setWinMessage] = useState("")
 
     useEffect( _ => {
-        if (displayText=== "make sure you take a break!") {
+        if (displayText=== buttonState.solution) {
             setWinMessage("Nice job!")
-        } else {
+            setTimeout(_ =>{
+                level += 1
+                setDisplayText("")
+                if (level <=2) {
+                    setButtonState(puzzles[level])
+                } else {
+                    setWinMessage("You solved 'em all!")
+                setDisplayText("🌟wooooooooooo🌟")
+                }
+            }, 3000)
+        } else if (level <=2) {
             setWinMessage("")
         }
     }, [displayText])
