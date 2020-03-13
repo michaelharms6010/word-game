@@ -2,6 +2,16 @@ import React, {useState, useContext, useEffect} from "react";
 import DisplayContext from "../contexts/DisplayContext"
 import puzzles from "./data.js"
 let level = 0;
+const endGame = {
+    b1: {clicked: true, value: ""},
+    b2: {clicked: true, value: ""},
+    b3: {clicked: true, value: ""},
+    b4: {clicked: true, value: ""},
+    b5: {clicked: true, value: ""},
+    b6: {clicked: true, value: ""},
+    b7: {clicked: true, value: ""},
+    solution: "Endgame"
+}
 
 export default function Buttons() {
     const {displayText, setDisplayText} = useContext(DisplayContext)
@@ -19,8 +29,9 @@ export default function Buttons() {
                 if (level <= puzzles.length-1) {
                     setButtonState(puzzles[level])
                 } else {
+                    setButtonState(endGame);
                     setWinMessage("You solved 'em all!")
-                setDisplayText("🌟wooooooooooo🌟")
+                    setDisplayText("🌟wooooooooooo🌟")
                 }
             }, 3000)
         } else if (level <= puzzles.length-1) {
@@ -29,6 +40,7 @@ export default function Buttons() {
     }, [displayText])
 
     const toggleButton = button => {
+        if (buttonState === endGame) return
         setButtonState({...buttonState, [button]: {...buttonState[button], clicked: !buttonState[button].clicked}})
         if (buttonState[button].clicked) {
             setDisplayText(displayText.replace(buttonState[button].value.replace('-', ""), ""))
