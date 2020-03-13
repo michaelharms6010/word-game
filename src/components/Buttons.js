@@ -16,14 +16,14 @@ export default function Buttons() {
             setTimeout(_ =>{
                 level += 1
                 setDisplayText("")
-                if (level <=2) {
+                if (level <= puzzles.length-1) {
                     setButtonState(puzzles[level])
                 } else {
                     setWinMessage("You solved 'em all!")
                 setDisplayText("🌟wooooooooooo🌟")
                 }
             }, 3000)
-        } else if (level <=2) {
+        } else if (level <= puzzles.length-1) {
             setWinMessage("")
         }
     }, [displayText])
