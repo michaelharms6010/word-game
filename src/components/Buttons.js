@@ -39,6 +39,12 @@ export default function Buttons() {
         }
     }, [displayText])
 
+    const restart = _ => {
+        setDisplayText("");
+        setButtonState(puzzles[0]);
+        setWinMessage("");
+    }
+
     const toggleButton = button => {
         if (buttonState === endGame) return
         setButtonState({...buttonState, [button]: {...buttonState[button], clicked: !buttonState[button].clicked}})
@@ -65,6 +71,7 @@ export default function Buttons() {
             <button className={buttonState.b7.clicked ? "activebutton" : "button"}onClick={_ => toggleButton("b7")}>🥩</button>
         </div>
         {winMessage ? <h1 className="victory-message">{winMessage}</h1> : null}
+        {buttonState === endGame ? <button onClick={restart}>Start Over</button> : null}
         </>
     )
 
